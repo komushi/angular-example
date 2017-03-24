@@ -95,9 +95,26 @@ http://<bucket-name>.s3-website-<region>.amazonaws.com
 
 For more information on Setting Up a Static Website please check out [s3-static-website][s3-static-website].
 
+# Use $routeProvider to switch between different views
+```
+angular.module('myApp', [
+  'ngRoute',
+  ...
+]).
+config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+  $routeProvider
+    .when("/", {redirectTo: '/view1'})
+    .when("/view1", {templateUrl: "view1/view1.html", controller: "View1Ctrl"})
+    .when("/view2", {templateUrl: "view2/view2.html", controller: "View2Ctrl"})
+    .otherwise({redirectTo: '/view1'});
+}]);
+```
+
+For more information on Angular Routing please check out [angular-routing][angular-routing].
 
 [angularjs]: https://angularjs.org/
 [bower]: http://bower.io/
 [node]: https://nodejs.org/
 [npm]: https://www.npmjs.org/
 [s3-static-website]: https://docs.aws.amazon.com/AmazonS3/latest/dev/HostingWebsiteOnS3Setup.html
+[angular-routing]: https://www.w3schools.com/angular/angular_routing.asp

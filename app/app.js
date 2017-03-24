@@ -8,7 +8,6 @@ angular.module('myApp', [
   'myApp.version'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  // $locationProvider.hashPrefix('!');
 
   $routeProvider
   	.when("/", {redirectTo: '/view1'})
